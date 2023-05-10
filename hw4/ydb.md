@@ -53,8 +53,32 @@ CREATE TABLE series (
 ```
 ydb --profile quickstart yql --file create-table.sql
 ```
-
-
+Сделаем, к примеру, SELECT, создадим файл:
+```
+SELECT 
+    series_id,
+    title AS series_title,
+    release_date
+FROM series;
+```
+Исполним команду:
+```
+ydb --profile quickstart yql --file select.sql
+```
+Результат:
+```
+┌───────────┬──────────────────┬──────────────┐
+| series_id | series_title     | release_date |
+├───────────┼──────────────────┼──────────────┤
+| 1         | "IT Crowd"       | "2006-02-03" |
+├───────────┼──────────────────┼──────────────┤
+| 2         | "Silicon Valley" | "2014-04-06" |
+└───────────┴──────────────────┴──────────────┘
+```
+Останавливаем докер:
+```
+docker kill ydb-local
+```
 
 
 
